@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   SIZE VARIABLES (EDIT HERE)
+================================*/
+:root {
+  /* SLIDER BOX */
+  --slider-box-width: 100%;
+  --slider-box-height: 70vh;
+
+  /* SLIDES (increase these 👇) */
+  --slide-width: 380px;
+  --slide-height: 520px;
+
+  /* VISUAL TUNING */
+  --box-radius: 0px;
+  --slide-radius: 16px;
+  --perspective: 1400px;
+}
+
+/* ===============================
+   SLIDER BOX
+================================*/
+.slider-box {
+  width: var(--slider-box-width);
+  height: var(--slider-box-height);
+  background: black;
+  border-radius: var(--box-radius);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  perspective: var(--perspective);
+  cursor: pointer;
+  /* border: 1px solid white; */
+}
+
+/* ===============================
+   SLIDER
+================================*/
+.slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ===============================
+   SLIDES
+================================*/
+.slide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--slide-width);
+  height: var(--slide-height);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    145deg,
+    rgba(17, 24, 39, 0.9),
+    rgba(3, 7, 18, 0.95)
+  );
+  backdrop-filter: blur(12px);
+
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(34, 255, 136, 0.25),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.slide:hover::before {
+  opacity: 1;
+}
+
+.slide:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    inset 0 0 0 1px rgba(34, 255, 136, 0.2),
+    0 35px 70px rgba(0, 0, 0, 0.7);
+}
+/* ===============================
+   CLICK HINT
+================================*/
+.slider-box::after {
+  content: "";
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.slide .slidedata {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid #000; */
+  padding: 10px;
+}
+.slide .slidedata h2 {
+  text-decoration: underline;
+}
+.slide .slidedata img {
+  width: 40px;
+  /* border: 1px solid #000; */
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+
+.slide .slidedata img:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.slide .slidecontent {
+  /* border: 1px solid #000; */
+  font-size: large;
+  color: white;
+}
+.slide .slidecontent p {
+  line-height: 25px;
+}
+
+.slide .slidepoints-slideimg {
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+}
+
+.slide .slidepoints-slideimg .slidepoints {
+  /* border: 1px solid #000; */
+  width: 65%;
+}
+
+.slide .slidepoints-slideimg .slidepoints ul li {
+  line-height: 40px;
+}
+
+.slide .slidepoints-slideimg .slideimg {
+  /* border: 1px solid #000; */
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 150px;
+  width: 35%;
+}
+.slide .slidepoints-slideimg .slideimg ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.slide .slidepoints-slideimg .slideimg img {
+  width: 45px;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
+  -moz-transition: 0.2s ease;
+  -ms-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+}
+
+.slide .slidepoints-slideimg .slideimg img:hover {
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
